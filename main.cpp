@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-    std::cout << "SDL initialized successfully! This is after i already built it!!!" << std::endl;
+    std::cout << "SDL initialized successfully! This is after repo created!" << std::endl;
     
     SDL_Quit();
     return 0;
