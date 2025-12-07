@@ -8,9 +8,24 @@ const int WINDOW_HEIGHT = 480;
 const int CELL_SIZE = 10;
 
 // Calculate grid dimensions from window and cell size
-const int GRID_COLS = WINDOW_WIDTH / CELL_SIZE;   // 800/5 = 160 columns
-const int GRID_ROWS = WINDOW_HEIGHT / CELL_SIZE;  // 600/5 = 120 rows
+const int GRID_COLS = WINDOW_WIDTH / CELL_SIZE;  
+const int GRID_ROWS = WINDOW_HEIGHT / CELL_SIZE; 
 
+
+void createEmptyMap(int grid[GRID_ROWS][GRID_COLS]) {
+    // Set the perimeter of the env to 1:
+    for(int row=0; row<GRID_ROWS; row++){
+        for(int col=0; col<GRID_COLS; col++){
+            if(row == 0 || row == GRID_ROWS-1){
+                grid[row][col] = 1;                
+            }else if(col == 0 || col == GRID_COLS-1){
+                grid[row][col] = 1;                
+            }else {
+                grid[row][col] = 0;
+            }
+        }
+    }
+}
 
 int main(int argc, char* argv[]) {
     SDL_Window* window = nullptr;
@@ -22,12 +37,10 @@ int main(int argc, char* argv[]) {
     SDL_CreateWindowAndRenderer(WINDOW_WIDTH*SCALE, WINDOW_HEIGHT*SCALE, 0, &window, &renderer);
     SDL_RenderSetScale(renderer, SCALE, SCALE);
 
-    // Store the grid state: 0 = free (white), 1 = obstacle (black)
-    int grid[GRID_ROWS][GRID_COLS] = {0};  // Initialize all to 0
+    // Initiate map
+    int grid[GRID_ROWS][GRID_COLS];
+    createEmptyMap(grid);
 
-    // Set some obstacles manually
-    grid[2][3] = 1;  // Cell at row 2, col 3 is an obstacle
-    grid[4][5] = 1;  // Cell at row 4, col 5 is an obstacle
     
     while(running)
     {
