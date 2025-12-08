@@ -1,8 +1,8 @@
 #include <SDL.h>
 
 const int SCALE = 2;
-const int WINDOW_WIDTH = 640;
-const int WINDOW_HEIGHT = 480;
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 500;
 
 // Primary control - the cell size
 const int CELL_SIZE = 10;
@@ -44,7 +44,11 @@ int main(int argc, char* argv[]) {
     
     while(running)
     {
-        while(SDL_PollEvent(&e)) {if (e.type == SDL_QUIT) {running = false;}}
+        while(SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) {
+                running = false;
+            }
+        }
 
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
