@@ -2,12 +2,13 @@
 #include "map.hpp"
 
 const int SCALE = 2;
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 500;
-const int CELL_SIZE = 10;
 
-const int GRID_COLS = WINDOW_WIDTH / CELL_SIZE;  
-const int GRID_ROWS = WINDOW_HEIGHT / CELL_SIZE; 
+const int GRID_COLS = 100; 
+const int GRID_ROWS = 70; 
+const int WINDOW_WIDTH = 800;
+const int CELL_SIZE = WINDOW_WIDTH / GRID_COLS;  // = 8
+const int WINDOW_HEIGHT = GRID_ROWS * CELL_SIZE;  // = 70 * 8 = 560
+ 
 
 int main(int argc, char* argv[]) {
     SDL_Window* window = nullptr;
