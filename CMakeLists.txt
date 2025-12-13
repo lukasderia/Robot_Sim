@@ -9,9 +9,11 @@ project(RobotSim)
 
 set(CMAKE_CXX_STANDARD 17)
 
+include_directories(include)
+
 find_package(SDL2 CONFIG REQUIRED)
 
-add_executable(robot_sim main.cpp)
+add_executable(robot_sim src/main.cpp src/map.cpp)
 
 target_link_libraries(robot_sim
     PRIVATE
