@@ -24,34 +24,21 @@ int main(int argc, char* argv[]) {
     Map map(GRID_ROWS, GRID_COLS, CELL_SIZE);
     map.createEmptyMap();
 
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderClear(renderer);
+
+    
     while(running) {
         while(SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 running = false;
             }
         }
-
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        // Clear render:
         SDL_RenderClear(renderer);
-
-        // Render the map
-        int** grid = map.getGrid();
-        for(int row = 0; row < map.getRows(); row++) {
-            for(int col = 0; col < map.getCols(); col++) {
-                SDL_Rect cell;
-                cell.x = col * map.getCellSize();
-                cell.y = row * map.getCellSize();
-                cell.w = map.getCellSize();
-                cell.h = map.getCellSize();
-
-                if (grid[row][col] == 1) {
-                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-                } else {
-                    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-                }
-                SDL_RenderFillRect(renderer, &cell);
-            }
-        }
+        
+        // Render map:
+        map.render(renderer);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(10);

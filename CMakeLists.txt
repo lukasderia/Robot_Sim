@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(include)
 
 find_package(SDL2 CONFIG REQUIRED)
+find_package(SDL2_image CONFIG REQUIRED)
 
 add_executable(robot_sim src/main.cpp src/map.cpp)
 
@@ -19,6 +20,7 @@ target_link_libraries(robot_sim
     PRIVATE
     $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
     $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+    $<IF:$<TARGET_EXISTS:SDL2_image::SDL2_image>,SDL2_image::SDL2_image,SDL2_image::SDL2_image-static>  # Add this line
 )
 
 # Make SDL2 includes consistent across platforms

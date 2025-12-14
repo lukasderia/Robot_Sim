@@ -1,0 +1,7 @@
+{
+  "dependencies": [
+    "sdl2",
+    "sdl2-image"
+  ],
+  "builtin-baseline": "01f602195983451bc83e72f4214af2cbc495aa94"
+}
