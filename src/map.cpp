@@ -37,6 +37,20 @@ void Map::loadFromImage(const char* filename){
     if(!surface){
         return;
     }
+
+    SDL_LockSurface(surface);
+
+    
+    for(int y = 0; y < surface->h; y++){
+        for(int x = 0; x < surface->w; x++){
+            Uint32* pixels = (Uint32*)surface->pixels;
+            Uint32 pixel = pixels[y * surface->w + x];   // Calculate 1D array index
+            
+        }
+    }
+    
+
+    SDL_UnlockSurface(surface);
     
     // Clean up
     SDL_FreeSurface(surface);
